@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between; 
+        }
+
+        .column {
+            width: 30%; 
+            margin: 0 10px; 
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Two-Factor Authentication (2FA) System</h1>
+    <h3>Please select your preferred verification method</h3>
+    <br></br>
+
+    <div class="container">
+        <div class="column">
+            <h2>OTP</h2>
+            <form action="/generate_otp" method="POST">
+                <button type="submit">Generate OTP</button>
+            </form>
+            <form action="/verify_otp" method="POST">
+                <label for="otp">Enter OTP:</label>
+                <input type="text" name="otp" required>
+                <button type="submit">Verify OTP</button>
+            </form>
+        </div>
+
+        <div class="column">
+            <h2>TOTP</h2>
+            <form action="/generate_totp" method="POST">
+                <button type="submit">Generate TOTP</button>
+            </form>
+            <form action="/verify_totp" method="POST">
+                <label for="otp">Enter TOTP:</label>
+                <input type="text" name="otp" required>
+                <button type="submit">Verify TOTP</button>
+            </form>
+        </div>
+
+        <div class="column">
+            <h2>QR Code</h2>
+            <form action="/generate_qr" method="POST">
+                <button type="submit">Generate QR Code</button>
+            </form>
+            {% if qr_image %}
+                <h2>Generated QR Code</h2>
+                <img src="{{ url_for('static', filename=qr_image) }}" alt="QR Code" width="200">
+            {% endif %}
+        </div>
+    </div>
+
+    <br>
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

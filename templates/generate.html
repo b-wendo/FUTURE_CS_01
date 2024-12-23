@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Generate OTP</title>
+</head>
+<body>
+    <h1>Generate OTP</h1>
+    <form method="POST">
+        <button type="submit">Generate OTP</button>
+    </form>
+    {% if otp %}
+        <p>Your OTP: <strong>{{ otp }}</strong></p>
+    {% endif %}
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
