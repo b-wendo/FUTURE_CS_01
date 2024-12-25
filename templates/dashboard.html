@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="alert alert-success text-center">
+            <h4 class="alert-heading">Welcome, {{ username }}!</h4>
+            <p>You are logged in and have successfully passed 2FA.</p>
+        </div>
+
+        <div class="card text-center mt-5">
+            <div class="card-body">
+                <h5 class="card-title">Account Status</h5>
+                {% if 'account_created' in session and session['account_created'] %}
+                    <p class="text-success">Account created successfully! Please set up 2FA.</p>
+                {% endif %}
+                {% if '2fa_verified' in session and session['2fa_verified'] %}
+                    <p class="text-success">2FA verified successfully! You are now logged in.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

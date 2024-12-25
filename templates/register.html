@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Two-Factor Authentication</title>
+    <title>Registration</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
         body {
@@ -11,18 +11,22 @@
             font-family: 'Arial', sans-serif;
         }
         .container {
-            max-width: 600px;
+            max-width: 500px;
             margin: 50px auto;
-            text-align: center;
             background: #ffffff;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 20px;
+        }
         .btn-custom {
-            padding: 10px 20px;
+            width: 100%;
+            padding: 10px;
             font-size: 16px;
-            margin: 10px;
         }
         .messages {
             margin-top: 20px;
@@ -35,19 +39,26 @@
             color: #ff6b6b;
             font-weight: bold;
         }
-        h1 {
-            color: #343a40;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Two-Factor Authentication System</h1>
-
-        <div class="d-flex justify-content-center">
-            <a href="{{ url_for('register') }}" class="btn btn-primary btn-custom">Register</a>
-            <a href="{{ url_for('login') }}" class="btn btn-secondary btn-custom">Login</a>
-        </div>
+        <h1>Registration</h1>
+        <form action="/register" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" name="email" class="form-control" placeholder="email"> 
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-custom">Register</button>
+        </form>
 
         <div class="messages">
             {% with messages = get_flashed_messages() %}
@@ -62,7 +73,7 @@
         </div>
     </div>
 
-    <!-- Optional Bootstrap JavaScript (if needed for interactivity) -->
+    <!-- Optional Bootstrap JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

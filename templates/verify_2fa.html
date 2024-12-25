@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify 2FA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 450px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #343a40;
+        }
+        .form-label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .btn-success {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Verify Two-Factor Authentication</h1>
+        <form method="POST">
+            <div class="mb-4">
+                <label for="totp" class="form-label">Enter the 6-digit code from your authenticator app:</label>
+                <input type="text" id="totp" name="totp" class="form-control" placeholder="123456" maxlength="6" pattern="\d{6}" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Verify</button>
+            </div>
+        </form>
+        <div class="back-link">
+            <p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
+        </div>
+    </div>
+</body>
+</html>

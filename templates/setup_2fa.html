@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup 2FA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Set Up Two-Factor Authentication (2FA)</h1>
+        <div class="text-center mt-4">
+            <p>Scan the QR code below using your preferred authenticator app (e.g., Google Authenticator).</p>
+            <img src="data:image/png;base64,{{ qr_code_image }}" alt="QR Code" class="img-fluid">
+        </div>
+        <div class="text-center mt-4">
+            <p>If you cannot scan the QR code, you can manually enter this key in your app:</p>
+            <code>{{ uri }}</code>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('verify_2fa') }}" class="btn btn-primary">Proceed to Verify 2FA</a>
+        </div>
+    </div>
+</body>
+</html>
