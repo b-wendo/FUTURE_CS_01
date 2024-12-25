@@ -50,7 +50,7 @@ This project demonstrates the implementation of Two-Factor Authentication (2FA) 
 
 ## Setup and Installation
 
-# Prerequisites
+## Prerequisites
 - Python 3.8 or later
 - A virtual environment (recommended)
 - Google Authenticator or any TOTP-compatible app
@@ -91,8 +91,8 @@ This project demonstrates the implementation of Two-Factor Authentication (2FA) 
 - **Edge Cases**: Test reusing tokens or entering multiple tokens within the same time window.
 
 ## Acknowledgements
-The FUTURE Interns program for providing this opportunity.
-Guidance and resources from mentors and peers.
-Open-source libraries like Flask and PyOTP.
+1. The FUTURE Interns program for providing this opportunity.
+2. Guidance and resources from mentors and peers.
+3. Open-source libraries like Flask and PyOTP.
 
 
