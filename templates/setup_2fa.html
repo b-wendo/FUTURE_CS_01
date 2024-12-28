@@ -6,12 +6,36 @@
     <title>Setup 2FA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
+<style>
+    .setup-2fa-container {
+    max-width: 600px; /* Limit the width of the container */
+    margin: 50px auto; /* Center the container on the page */
+    padding: 20px; /* Add some padding for spacing */
+    border: 1px solid #ccc; /* Add a light border */
+    border-radius: 8px; /* Round the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    background-color: #fff; /* Set a white background */
+    text-align: center; /* Center the text */
+}
+
+.setup-2fa-container img {
+    width: 200px; /* Set a smaller QR code size */
+    height: auto; /* Maintain the aspect ratio */
+    margin: 20px 0; /* Add space above and below the QR code */
+}
+
+.setup-2fa-container .btn {
+    margin-top: 20px; /* Add space above the button */
+}
+
+</style>
+
 <body>
-    <div class="container mt-5">
+    <div class="setup-2fa-container container mt-5">
         <h1 class="text-center">Set Up Two-Factor Authentication (2FA)</h1>
         <div class="text-center mt-4">
             <p>Scan the QR code below using your preferred authenticator app (e.g., Google Authenticator).</p>
-            <img src="data:image/png;base64,{{ qr_code_image }}" alt="QR Code" class="img-fluid">
+            <img src="data:image/png;base64,{{ qr_code_image }}" alt="QR Code" class="img-fluid qr-code">
         </div>
         <div class="text-center mt-4">
             <p>If you cannot scan the QR code, you can manually enter this key in your app:</p>

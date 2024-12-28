@@ -18,6 +18,29 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+        .password-container {
+        position: relative;
+        margin-bottom: 20px; /* Adds spacing below the password field */
+       }
+        .password-container input {
+        width: 100%;
+        padding-right: 40px; /* Adds space for the eye icon */
+        height: auto; /* Ensures consistent input field height */
+        }
+         .toggle-password {
+        position: absolute;
+        top: 50%; /* Centers the icon vertically */
+        right: 10px; /* Positions the icon towards the right */
+        transform: translateY(-1%); /* Ensures proper vertical centering */
+        cursor: pointer;
+        font-size: 18px; /* Adjust icon size */
+        color: #6c757d; /* Sets the icon color */
+        line-height: normal; /* Ensures alignment with the input text */
+        }
+       .toggle-password:hover {
+        color: #007BFF; /* Changes the icon color on hover */
+        }
+
         h1 {
             text-align: center;
             color: #343a40;
@@ -36,8 +59,8 @@
             list-style: none;
         }
         .messages li {
-            color: #e63946;
-            font-weight: bold;
+            color: #1D3557;
+            font-weight: normal;
         }
         .footer {
             text-align: center;
@@ -60,11 +83,12 @@
         <form action="/login" method="post">
             <div class="mb-3">
                 <label for="username" class="form-label">Username or Email:</label>
-                <input type="text" class="form-control" id="login_id" name="login_id" placeholder="username or email">
+                <input type="text" class="form-control" id="login_id" name="login_id">
             </div>
-            <div class="mb-3">
+            <div class="form-group password-container">
                 <label for="password" class="form-label">Password:</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                <input type="password" class="form-control" id="password" name="password">
+                <span class="toggle-password" onclick="togglePassword('password')">&#128065;</span>
             </div>
             <button type="submit" class="btn btn-primary btn-custom">Login</button>
 
@@ -84,8 +108,12 @@
             <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
         </div>
     </div>
-
-    <!-- Optional Bootstrap JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function togglePassword(fieldId) {
+        const passwordField = document.getElementById(fieldId);
+        const type = passwordField.type === "password" ? "text" : "password";
+        passwordField.type = type;
+    }
+    </script>
 </body>
 </html>
